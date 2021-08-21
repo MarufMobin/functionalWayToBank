@@ -1,5 +1,4 @@
 // input Field Grap Purpuss
-
 function inputField(fieldId){
     const fieldInputId =  document.getElementById(fieldId);
     const fieldInputValue = parseFloat(fieldInputId.value);
@@ -14,14 +13,32 @@ function valueUpdate( valueId , amount ){
     const updateValueAmount = valueInputNumber + amount;
     valueInputId.innerText = updateValueAmount;
 };
-// calculation Total Amount
 
+// calculation Total Amount
+function totalBalance( amount , isset ){
+    const totalBalanceField = document.getElementById('balance-total');
+    const totalTexToNum = parseFloat(totalBalanceField.innerText);
+    let newTotalBalance;
+    if( isset == true ){
+        newTotalBalance = totalTexToNum + amount
+        totalBalanceField.innerText = newTotalBalance;
+    }else{
+        newTotalBalance = totalTexToNum - amount
+        totalBalanceField.innerText = newTotalBalance;
+    }
+    
+}
+
+// deposit Button
 document.getElementById('deposit-button').addEventListener('click',function(){
    const amount =  inputField('deposit-input');
-    valueUpdate( 'deposit-total', amount )
+    valueUpdate( 'deposit-total', amount );
+    totalBalance( amount, true );
 });
 
+// withDraw Button
 document.getElementById('withdraw-button').addEventListener('click',function(){
     const amount = inputField('withdraw-input');
      valueUpdate('withdraw-total', amount);
+     totalBalance( amount, false );
 });
