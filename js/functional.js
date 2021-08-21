@@ -24,6 +24,7 @@ function getInnerTextValue(fieldId){
 }
 
 // calculation Total Amount
+/* 
 function totalBalance( amount , isset ){
     const totalBalanceField = document.getElementById('balance-total');
     const totalTexToNum = parseFloat(totalBalanceField.innerText);
@@ -36,8 +37,14 @@ function totalBalance( amount , isset ){
         totalBalanceField.innerText = newTotalBalance;
     }
     
-}
+} */
 
+function totalBalance(){
+  const totalAmount =  1240 + getInnerTextValue('deposit-total') - getInnerTextValue('withdraw-total');
+   
+  const balanceTotal = document.getElementById('balance-total');
+  balanceTotal.innerText = totalAmount;
+}
 // deposit Button
 document.getElementById('deposit-button').addEventListener('click',function(){
    const amount =  inputField('deposit-input');
